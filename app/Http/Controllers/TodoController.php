@@ -50,7 +50,7 @@ class TodoController extends Controller
         $input = $request->all();
         $input['user_id'] = Auth::id();
         $this->todo->fill($input)->save();
-        return redirect()->to('todo'); //一覧画面に戻る
+        return redirect()->route('todo.index'); //一覧画面に戻る
     }
 
     /**
@@ -90,7 +90,7 @@ class TodoController extends Controller
         $input = $request->all();
         // dd($this->todo,$this->todo->find($id),$this->todo->find($id)->fill($input));
         $this->todo->find($id)->fill($input)->save();
-        return redirect()->to('todo');
+        return redirect()->route('todo.index');
     }
 
     /**
@@ -102,7 +102,7 @@ class TodoController extends Controller
     public function destroy($id) //idはレコードのidカラムの値
     {
         $this->todo->find($id)->delete();
-        return redirect()->to('todo');
+        return redirect()->route('todo.index');
     }
 
 }
